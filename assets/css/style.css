@@ -1,0 +1,26 @@
+
+.container {
+    text-align: center;
+    margin-top: 150px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.smallText {
+    font-size: 25px;
+    line-height: 1.5;
+    
+}
+
+.questions {
+color: black;
+font-size: 40px;
+}
+
+.btnStyle {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    background-color: rgb(82, 11, 148);
+    border-radius: 8px;
+    height: 50px;
+    width: 150px;
+}
