@@ -1,32 +1,88 @@
+// global variables
+var btnEl = document.getElementById('startBtn');
+
+
+// questions
+var questions = [
+  {
+    question: "Arrays in JavaScript can be used to store _______________.",
+    answer: [
+      { choice: "numbers and strings", isCorrect: false },
+      { choice: "other arrays", isCorrect: false },
+      { choice: "booleans", isCorrect: false },
+      { choice: "all of the above", isCorrect: true },
+    ],
+  },
+  {
+    question: "String values must be enclosed within _______________ when being assigned to variables",
+    answer: [
+      { choice: "commas", isCorrect: false },
+      { choice: "curly brackets", isCorrect: false },
+      { choice: "quotes", isCorrect: true },
+      { choice: "parenthesis", isCorrect: false },
+    ],
+  },
+  {
+    question: "The condition in an if / else statement is enclosed with _______________.",
+    answer: [
+      { choice: "quotes", isCorrect: false },
+      { choice: "curly brackets", isCorrect: false },
+      { choice: "parenthesis", isCorrect: true },
+      { choice: "square brackets", isCorrect: false },
+    ],
+  },
+  {
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answer: [
+      { choice: "JavaScript", isCorrect: false },
+      { choice: "terminal/bash", isCorrect: false },
+      { choice: "for loops", isCorrect: false },
+      { choice: "console.log", isCorrect: true},
+    ],
+  },
+];
 
 
 
+// dynamically generate questions
 
 
-    
+// clear page
 
-// Start Quiz function
-var startQuiz = function() {};
 
+// cycle through questions
+
+
+// keep track of score 
+
+
+// create timer 
 
 
 // clear start page function
 var clearPage = function() {
-
+    
     var titleEl = document.querySelector('#title');
     titleEl.remove();
 
     var inStructEl = document.querySelector('#instructions');
     inStructEl.remove();
     
-    var btnEl = document.querySelector('#startBtn');
+    
     btnEl.remove();
 
     // starts quiz after page cleared
-    startQuiz();
+    loadQuest();
 };
 
 
 // page clears after start button clicked and quiz starts
-addEventListener("click", clearPage);
+btnEl.addEventListener("click", clearPage);
+
+
+
+
+
+
+
 
