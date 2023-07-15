@@ -1,3 +1,4 @@
+
 // global variables
 var btnEl = document.getElementById('startBtn');
 
@@ -42,9 +43,42 @@ var questions = [
   },
 ];
 
+console.log(questions);
+
+
 
 
 // dynamically generate questions
+var loadQuest = function() {
+
+  // dynamically generate question
+  var questionEl = document.getElementById('quest');
+  var questEl = document.createElement('li')
+  questEl.textContent = (questions[0]['question']);
+  questEl.classname = 'questions';
+  questionEl.appendChild(questEl);
+
+  // dynamically generate choices
+  var choiceEl = document.getElementById('choice');
+
+// create for loop to generate all choices
+var firstQuestion = questions[0]; // Retrieve the first question object
+var answers = firstQuestion.answer; // Retrieve the answers array for the first question
+
+for (var i = 0; i < answers.length; i++) {
+  var choices = answers[i].choice;
+  console.log(choices);
+
+  var choiEl = document.createElement('li')
+  choiEl.className = 'multi-choice';
+  choiEl.textContent = choices;
+  choiceEl.appendChild(choiEl);
+}
+};
+
+
+
+
 
 
 // clear page
