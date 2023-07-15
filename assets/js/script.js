@@ -3,6 +3,8 @@
 var btnEl = document.getElementById('startBtn');
 var choiceEl = document.getElementById('choice');
 var questionEl = document.getElementById('quest');
+var currentQuestionIndex = 0;
+
 // questions
 var questions = [
   {
@@ -47,53 +49,46 @@ console.log(questions);
 
 
 
-
 // dynamically generate questions
 var loadQuest = function() {
-
+  var currentQuestion = questions[currentQuestionIndex];
+  var answers = currentQuestion.answer;
+  
   // dynamically generate question
   var questEl = document.createElement('li');
-  questEl.textContent = (questions[0]['question']);
+  questEl.textContent = currentQuestion.question;
   questEl.classname = 'questions';
   questionEl.appendChild(questEl);
- 
-// Retrieve the first question object
-var firstQuestion = questions[0]; 
-
-// Retrieve the answers array for the first question
-var answers = firstQuestion.answer; 
 
 // create for loop to generate all choices
 for (var i = 0; i < answers.length; i++) {
   var choices = answers[i].choice;
-  console.log(choices);
 
 // dynamically generate choices
   var choiEl = document.createElement('li');
   choiEl.className = 'multi-choice';
   choiEl.textContent = choices;
   choiceEl.appendChild(choiEl);
-
-// Add event listener to handle click event
-choiEl.addEventListener('click', function(event) {
-
-  // Access the clicked choice and perform desired actions
-  var selectedChoice = event.target.textContent;
-  console.log("Selected choice:", selectedChoice);
-
-// clear page after choice made
- if (event){
-  for (var i = 0; i < answers.length; i++) {
-    choiceEl.remove();
-    questionEl.remove();}}
-})}
+}
 };
 
 
-
-
 // cycle through questions
+nextQuest = function() {
 
+  //increment the previous question and choices
+currentQuestionIndex++;
+
+// Check if all questions have been displayed
+currentQuestionIndex == questions.length
+
+// Clear the previous question and choices
+choiceEl.innerHTML = '';
+questionEl.innerHTML = '';
+
+// Load the next question and choices
+loadQuest();
+};
 
 // keep track of score 
 
@@ -117,6 +112,18 @@ var clearPage = function() {
     loadQuest();
 };
 
+// when choice is clicked
+choiceEl.addEventListener('click', function(event) {
+
+  // Access the clicked choice and perform desired actions
+  var selectedChoice = event.target.textContent;
+  console.log("Selected choice:", selectedChoice);
+
+// clear page after choice made
+ if (event){
+    nextQuest();
+ }
+});
 
 // page clears after start button clicked and quiz starts
 btnEl.addEventListener("click", clearPage);
