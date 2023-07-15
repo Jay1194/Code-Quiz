@@ -1,0 +1,41 @@
+
+.container {
+    text-align: center;
+    margin-top: 150px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+.smallText {
+    font-size: 25px;
+    line-height: 1.7;
+}
+
+.questions {
+color: black;
+font-size: 40px;
+}
+
+.btnStyle {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    background-color: rgb(82, 11, 148);
+    border-radius: 8px;
+    height: 50px;
+    width: 150px;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+.multi-choice {
+    color: rgb(255, 255, 255);
+    background: rgb(82, 11, 148);
+    font-size: 30px;
+    border-radius: 8px;
+    height: 50px;
+    width: 400px;
+    margin:0px auto;
+    margin-top: 30px;
+}
