@@ -1,8 +1,8 @@
 
 // global variables
 var btnEl = document.getElementById('startBtn');
-
-
+var choiceEl = document.getElementById('choice');
+var questionEl = document.getElementById('quest');
 // questions
 var questions = [
   {
@@ -52,36 +52,44 @@ console.log(questions);
 var loadQuest = function() {
 
   // dynamically generate question
-  var questionEl = document.getElementById('quest');
-  var questEl = document.createElement('li')
+  var questEl = document.createElement('li');
   questEl.textContent = (questions[0]['question']);
   questEl.classname = 'questions';
   questionEl.appendChild(questEl);
+ 
+// Retrieve the first question object
+var firstQuestion = questions[0]; 
 
-  // dynamically generate choices
-  var choiceEl = document.getElementById('choice');
+// Retrieve the answers array for the first question
+var answers = firstQuestion.answer; 
 
 // create for loop to generate all choices
-var firstQuestion = questions[0]; // Retrieve the first question object
-var answers = firstQuestion.answer; // Retrieve the answers array for the first question
-
 for (var i = 0; i < answers.length; i++) {
   var choices = answers[i].choice;
   console.log(choices);
 
-  var choiEl = document.createElement('li')
+// dynamically generate choices
+  var choiEl = document.createElement('li');
   choiEl.className = 'multi-choice';
   choiEl.textContent = choices;
   choiceEl.appendChild(choiEl);
-}
+
+// Add event listener to handle click event
+choiEl.addEventListener('click', function(event) {
+
+  // Access the clicked choice and perform desired actions
+  var selectedChoice = event.target.textContent;
+  console.log("Selected choice:", selectedChoice);
+
+// clear page after choice made
+ if (event){
+  for (var i = 0; i < answers.length; i++) {
+    choiceEl.remove();
+    questionEl.remove();}}
+})}
 };
 
 
-
-
-
-
-// clear page
 
 
 // cycle through questions
@@ -112,6 +120,7 @@ var clearPage = function() {
 
 // page clears after start button clicked and quiz starts
 btnEl.addEventListener("click", clearPage);
+
 
 
 
