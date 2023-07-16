@@ -1,5 +1,4 @@
 
-
 // global variables
 var btnEl = document.getElementById('startBtn');
 var choiceEl = document.getElementById('choice');
@@ -7,6 +6,7 @@ var questionEl = document.getElementById('quest');
 var currentQuestionIndex = 0;
 var highScore = 0;
 var forLabelEl = document.getElementById('label');
+
 
 // questions
 var questions = [
@@ -47,7 +47,6 @@ var questions = [
     ],
   },
 ];
-
 
 
 // dynamically generate questions
