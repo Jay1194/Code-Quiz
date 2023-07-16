@@ -6,6 +6,7 @@ var choiceEl = document.getElementById('choice');
 var questionEl = document.getElementById('quest');
 var currentQuestionIndex = 0;
 var highScore = 0;
+var forLabelEl = document.getElementById('label');
 
 // questions
 var questions = [
@@ -80,18 +81,49 @@ nextQuest = function() {
   //increment the previous question and choices
 currentQuestionIndex++;
 
-// Check if all questions have been displayed
-currentQuestionIndex == questions.length
-
 // Clear the previous question and choices
 choiceEl.innerHTML = '';
 questionEl.innerHTML = '';
 
+//highscore page function
+if (currentQuestionIndex == questions.length) {
+
+  // Highscore Title
+  var titleEl = document.createElement('li');
+  titleEl.textContent = "HighScore";
+  titleEl.classname = 'questions';
+  questionEl.appendChild(titleEl);
+
+  // Your score
+  var yourScoreEl = document.createElement('li');
+  yourScoreEl.className = 'smallText';
+  yourScoreEl.textContent = " Your Score " + highScore ;
+  choiceEl.appendChild(yourScoreEl);
+
+  // Create the label element
+  var label = document.createElement('label');
+  label.textContent = ' Enter Your Intials ';
+
+  // Create the input box element
+  var input = document.createElement('input');
+  input.type = 'text';
+  
+  // Save button
+  var subBtnEl = document.getElementById('submit');
+  var createBtnEl = document.createElement('button')
+  createBtnEl.className = 'btnStyle';
+  createBtnEl.textContent = " Save";
+
+
+  // Append the label and input box and save button to the parent element
+  forLabelEl.appendChild(label);
+  forLabelEl.appendChild(input);
+  subBtnEl.appendChild(createBtnEl);
+}
+
 // Load the next question and choices
 loadQuest();
 };
-
-
 
 
 // create timer 
