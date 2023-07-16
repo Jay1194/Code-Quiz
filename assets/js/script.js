@@ -1,10 +1,11 @@
 
+
 // global variables
 var btnEl = document.getElementById('startBtn');
 var choiceEl = document.getElementById('choice');
 var questionEl = document.getElementById('quest');
 var currentQuestionIndex = 0;
-var score = 0;
+var highScore = 0;
 
 // questions
 var questions = [
@@ -47,12 +48,13 @@ var questions = [
 ];
 
 
+
 // dynamically generate questions
 var loadQuest = function() {
 
-  var currentQuestion = questions[currentQuestionIndex];
-  var answers = currentQuestion.answer;
-  
+var currentQuestion = questions[currentQuestionIndex];
+var answers = currentQuestion.answer;
+
   // dynamically generate question
   var questEl = document.createElement('li');
   questEl.textContent = currentQuestion.question;
@@ -89,7 +91,7 @@ questionEl.innerHTML = '';
 loadQuest();
 };
 
-// keep track of score 
+
 
 
 // create timer 
@@ -118,20 +120,26 @@ choiceEl.addEventListener('click', function(event) {
   var selectedChoice = event.target.textContent;
   console.log("Selected choice:", selectedChoice);
 
-// clear page after choice made
- if (event){
+  var rightAnswer = questions[currentQuestionIndex].answer;
+
+  var selectedChoiceIndex = rightAnswer.findIndex(function(answer) {
+    return answer.choice === selectedChoice;
+  });
+
+  var isCorrect = rightAnswer[selectedChoiceIndex].isCorrect;
+  console.log("Answer is:", isCorrect);
+
+  // Clear page after choice is made
+  if (event) {
+    // Keep track of score
+    if (isCorrect) {
+      highScore++;
+      console.log("High score:", highScore);
+    }
+    // If wrong, go to next question
     nextQuest();
- }
+  }
 });
 
 // page clears after start button clicked and quiz starts
 btnEl.addEventListener("click", clearPage);
-
-
-
-
-
-
-
-
-
