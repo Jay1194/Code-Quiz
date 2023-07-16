@@ -4,6 +4,7 @@ var btnEl = document.getElementById('startBtn');
 var choiceEl = document.getElementById('choice');
 var questionEl = document.getElementById('quest');
 var currentQuestionIndex = 0;
+var score = 0;
 
 // questions
 var questions = [
@@ -45,12 +46,10 @@ var questions = [
   },
 ];
 
-console.log(questions);
-
-
 
 // dynamically generate questions
 var loadQuest = function() {
+
   var currentQuestion = questions[currentQuestionIndex];
   var answers = currentQuestion.answer;
   
@@ -105,12 +104,12 @@ var clearPage = function() {
     var inStructEl = document.querySelector('#instructions');
     inStructEl.remove();
     
-    
     btnEl.remove();
 
     // starts quiz after page cleared
     loadQuest();
 };
+
 
 // when choice is clicked
 choiceEl.addEventListener('click', function(event) {
