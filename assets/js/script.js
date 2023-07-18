@@ -6,7 +6,9 @@ var questionEl = document.getElementById('quest');
 var currentQuestionIndex = 0;
 var highScore = 0;
 var forLabelEl = document.getElementById('label');
-
+var startCountdown;
+var counter = 60;
+var countDisplayEl = document.getElementById('time');
 
 // questions
 var questions = [
@@ -113,21 +115,41 @@ if (currentQuestionIndex == questions.length) {
   createBtnEl.className = 'btnStyle';
   createBtnEl.textContent = " Save";
 
-
   // Append the label and input box and save button to the parent element
   forLabelEl.appendChild(label);
   forLabelEl.appendChild(input);
   subBtnEl.appendChild(createBtnEl);
-}
+};
 
 // Load the next question and choices
 loadQuest();
+
 };
 
 
-// create timer 
+// create timer function
+var countdown = function() {
+  console.log(counter);
+  countDisplayEl.textContent = counter;
+  counter--;
 
+  // if time runs out
+  if (counter == 0) {clearInterval(startCountdown);
+    spanEl = document.querySelector('span');
+    spanEl.innerHTML = '';
 
+    pEl = document.getElementById('black');
+    pEl.innerHTML = '';
+
+    window.alert('Your Out Of Time!');
+
+  // Take us to highscore page
+    currentQuestionIndex = 3
+    nextQuest();
+  }
+};
+ 
+ 
 // clear start page function
 var clearPage = function() {
     
@@ -138,6 +160,13 @@ var clearPage = function() {
     inStructEl.remove();
     
     btnEl.remove();
+
+    var spanEl = document.querySelector('span');
+    
+    spanEl.textContent = '';
+    
+    //start timer on click
+    startCountdown = setInterval(countdown, 1000);
 
     // starts quiz after page cleared
     loadQuest();
@@ -174,3 +203,6 @@ choiceEl.addEventListener('click', function(event) {
 
 // page clears after start button clicked and quiz starts
 btnEl.addEventListener("click", clearPage);
+
+
+

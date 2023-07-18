@@ -50,6 +50,10 @@ ul, li {
     font-size: 20px;
 }
 
-.black {
+#black {
+    color: black;
+}
+
+#time {
     color: black;
 }
