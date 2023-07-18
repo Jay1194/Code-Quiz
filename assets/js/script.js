@@ -135,7 +135,7 @@ var countdown = function() {
   counter--;
 
   // if time runs out
-  if (counter == 0) {
+  if (counter <= 0) {
   
     clearInterval(startCountdown);
 
@@ -199,13 +199,18 @@ choiceEl.addEventListener('click', function(event) {
     // reduce time if answer wrong
     if (!isCorrect) {
       counter -= 15;
-    }
+
+      if (counter <= 0) {
+        countdown();
+      }
+    };
 
     // Keep track of score
     if (isCorrect) {
       highScore++;
       console.log("High score:", highScore);
-    }
+    };
+
     // If wrong, go to next question
     nextQuest();
   }
