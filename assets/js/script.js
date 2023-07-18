@@ -125,7 +125,6 @@ if (currentQuestionIndex == questions.length) {
 
 // Load the next question and choices
 loadQuest();
-
 };
 
 
