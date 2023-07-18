@@ -119,6 +119,8 @@ if (currentQuestionIndex == questions.length) {
   forLabelEl.appendChild(label);
   forLabelEl.appendChild(input);
   subBtnEl.appendChild(createBtnEl);
+
+  clearInterval(startCountdown);
 };
 
 // Load the next question and choices
@@ -134,7 +136,10 @@ var countdown = function() {
   counter--;
 
   // if time runs out
-  if (counter == 0) {clearInterval(startCountdown);
+  if (counter == 0) {
+  
+    clearInterval(startCountdown);
+
     spanEl = document.querySelector('span');
     spanEl.innerHTML = '';
 
@@ -191,6 +196,12 @@ choiceEl.addEventListener('click', function(event) {
 
   // Clear page after choice is made
   if (event) {
+
+    // reduce time if answer wrong
+    if (!isCorrect) {
+      counter -= 15;
+    }
+
     // Keep track of score
     if (isCorrect) {
       highScore++;
