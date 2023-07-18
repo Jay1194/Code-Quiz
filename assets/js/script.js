@@ -9,6 +9,13 @@ var forLabelEl = document.getElementById('label');
 var startCountdown;
 var counter = 60;
 var countDisplayEl = document.getElementById('time');
+var intials = '';
+var pEl = document.getElementById('black');
+
+// from clear page
+var titleEl = document.querySelector('#title');
+var inStructEl = document.querySelector('#instructions');
+var spanEl = document.querySelector('span');
 
 // questions
 var questions = [
@@ -95,6 +102,10 @@ if (currentQuestionIndex == questions.length) {
   titleEl.classname = 'questions';
   questionEl.appendChild(titleEl);
 
+  // remove high score button and time
+
+  viewHighEl.remove();
+
   // Your score
   var yourScoreEl = document.createElement('li');
   yourScoreEl.className = 'smallText';
@@ -108,18 +119,25 @@ if (currentQuestionIndex == questions.length) {
   // Create the input box element
   var input = document.createElement('input');
   input.type = 'text';
-  
+
+  // Get intials data
+  input.textContent = '';
+  intials = input.textContent;
+  console.log(intials);
+
   // Save button
   var subBtnEl = document.getElementById('submit');
   var createBtnEl = document.createElement('button')
   createBtnEl.className = 'btnStyle';
-  createBtnEl.textContent = " Save";
+  createBtnEl.textContent = "Save";
 
   // Append the label and input box and save button to the parent element
   forLabelEl.appendChild(label);
   forLabelEl.appendChild(input);
   subBtnEl.appendChild(createBtnEl);
 
+  // hide and stop timer
+  pEl.remove();
   clearInterval(startCountdown);
 };
 
@@ -130,7 +148,6 @@ loadQuest();
 
 // create timer function
 var countdown = function() {
-  console.log(counter);
   countDisplayEl.textContent = counter;
   counter--;
 
@@ -141,32 +158,59 @@ var countdown = function() {
 
     spanEl = document.querySelector('span');
     spanEl.innerHTML = '';
-
-    pEl = document.getElementById('black');
+   
     pEl.innerHTML = '';
 
     window.alert('Your Out Of Time!');
 
   // Take us to highscore page
-    currentQuestionIndex = 3
+    currentQuestionIndex = 3;
     nextQuest();
   }
 };
  
  
+
+var viewHighEl = document.getElementById('score');
+
+// when View high scores is clicked
+viewHighEl.addEventListener('click', function(event){
+
+  // Access highscores
+  var viewScores = event.target.textContent;
+  console.log('This allow us to', viewScores);
+
+  // clear page
+  titleEl.textContent = 'High Scores'
+    
+  inStructEl.textContent = ''; // local storage intials and score
+  
+  pEl.remove();
+
+  viewHighEl.remove();
+
+  btnEl.remove();
+
+  spanEl.textContent = '';
+
+  currentQuestionIndex = 4;
+
+  // Add html
+
+  
+})
+
+
+
 // clear start page function
 var clearPage = function() {
     
-    var titleEl = document.querySelector('#title');
     titleEl.remove();
 
-    var inStructEl = document.querySelector('#instructions');
     inStructEl.remove();
     
     btnEl.remove();
 
-    var spanEl = document.querySelector('span');
-    
     spanEl.textContent = '';
     
     //start timer on click
@@ -198,8 +242,9 @@ choiceEl.addEventListener('click', function(event) {
 
     // reduce time if answer wrong
     if (!isCorrect) {
-      counter -= 15;
+      counter -= 12;
 
+      // check if counter value is equal to or less then 0
       if (counter <= 0) {
         countdown();
       }
