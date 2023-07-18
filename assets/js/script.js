@@ -171,7 +171,7 @@ var clearPage = function() {
     spanEl.textContent = '';
     
     //start timer on click
-    startCountdown = setInterval(countdown, 1000);
+    startCountdown = setInterval(countdown, 800);
 
     // starts quiz after page cleared
     loadQuest();
