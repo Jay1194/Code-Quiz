@@ -180,7 +180,6 @@ var countdown = function() {
   }
 };
  
- 
 
 var viewHighEl = document.getElementById('score');
 
