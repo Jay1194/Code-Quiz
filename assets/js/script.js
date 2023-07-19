@@ -65,7 +65,7 @@ var answers = currentQuestion.answer;
   // dynamically generate question
   var questEl = document.createElement('li');
   questEl.textContent = currentQuestion.question;
-  questEl.classname = 'questions';
+  questEl.className = 'questions';
   questionEl.appendChild(questEl);
 
 // create for loop to generate all choices
@@ -147,6 +147,7 @@ if (currentQuestionIndex == questions.length) {
     localStorage.setItem('userData', JSON.stringify(userData));
 
     alert('Initials and score have been saved!');
+    location.reload();
   });
 
   return; // Exit the function after creating the high score page
@@ -210,7 +211,7 @@ viewHighEl.addEventListener('click', function(event){
 
   if (userDataString) {
     var userData = JSON.parse(userDataString);
-    var initials = userData.initials;
+    var initials = userData.initials.toUpperCase();
     var score = userData.score;
 
     // Display the initials and score on the page
@@ -219,7 +220,6 @@ viewHighEl.addEventListener('click', function(event){
     choiceEl.appendChild(highScoreEl);
   }
 })
-
 
 
 // clear start page function
@@ -280,9 +280,6 @@ choiceEl.addEventListener('click', function(event) {
     nextQuest();
   }
 });
-
-
-
 
 
 // page clears after start button clicked and quiz starts
