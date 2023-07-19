@@ -1,4 +1,3 @@
-
 // global variables
 var btnEl = document.getElementById('startBtn');
 var choiceEl = document.getElementById('choice');
@@ -9,7 +8,6 @@ var forLabelEl = document.getElementById('label');
 var startCountdown;
 var counter = 60;
 var countDisplayEl = document.getElementById('time');
-var intials = '';
 var pEl = document.getElementById('black');
 
 // from clear page
@@ -103,7 +101,6 @@ if (currentQuestionIndex == questions.length) {
   questionEl.appendChild(titleEl);
 
   // remove high score button and time
-
   viewHighEl.remove();
 
   // Your score
@@ -120,10 +117,6 @@ if (currentQuestionIndex == questions.length) {
   var input = document.createElement('input');
   input.type = 'text';
 
-  // Get intials data
-  input.textContent = '';
-  intials = input.textContent;
-  console.log(intials);
 
   // Save button
   var subBtnEl = document.getElementById('submit');
@@ -139,12 +132,29 @@ if (currentQuestionIndex == questions.length) {
   // hide and stop timer
   pEl.remove();
   clearInterval(startCountdown);
-};
+
+  // Save button click event listener
+  createBtnEl.addEventListener('click', function() {
+    var initials = input.value; // Set the initials to the value of the input field
+    console.log("Initials: " + initials);
+
+  // Save the initials and score to local storage
+    var userData = {
+      initials: initials,
+      score: highScore
+    };
+
+    localStorage.setItem('userData', JSON.stringify(userData));
+
+    alert('Initials and score have been saved!');
+  });
+
+  return; // Exit the function after creating the high score page
+}
 
 // Load the next question and choices
-loadQuest();
+loadQuest();  
 };
-
 
 // create timer function
 var countdown = function() {
@@ -183,7 +193,7 @@ viewHighEl.addEventListener('click', function(event){
   // clear page
   titleEl.textContent = 'High Scores'
     
-  inStructEl.textContent = ''; // local storage intials and score
+  inStructEl.textContent = ''; 
   
   pEl.remove();
 
@@ -195,9 +205,19 @@ viewHighEl.addEventListener('click', function(event){
 
   currentQuestionIndex = 4;
 
-  // Add html
+  // Add html / local storage intials and score
+  var userDataString = localStorage.getItem('userData');
 
-  
+  if (userDataString) {
+    var userData = JSON.parse(userDataString);
+    var initials = userData.initials;
+    var score = userData.score;
+
+    // Display the initials and score on the page
+    var highScoreEl = document.createElement('li');
+    highScoreEl.textContent = 'Initials: ' + initials + ' | Score: ' + score;
+    choiceEl.appendChild(highScoreEl);
+  }
 })
 
 
@@ -261,8 +281,9 @@ choiceEl.addEventListener('click', function(event) {
   }
 });
 
+
+
+
+
 // page clears after start button clicked and quiz starts
 btnEl.addEventListener("click", clearPage);
-
-
-
