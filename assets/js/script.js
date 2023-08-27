@@ -55,7 +55,6 @@ var questions = [
   },
 ];
 
-
 // dynamically generate questions
 var loadQuest = function() {
 
@@ -79,7 +78,6 @@ for (var i = 0; i < answers.length; i++) {
   choiceEl.appendChild(choiEl);
 }
 };
-
 
 // cycle through questions
 nextQuest = function() {
@@ -116,7 +114,6 @@ if (currentQuestionIndex == questions.length) {
   // Create the input box element
   var input = document.createElement('input');
   input.type = 'text';
-
 
   // Save button
   var subBtnEl = document.getElementById('submit');
@@ -179,7 +176,6 @@ var countdown = function() {
     nextQuest();
   }
 };
- 
 
 var viewHighEl = document.getElementById('score');
 
@@ -220,7 +216,6 @@ viewHighEl.addEventListener('click', function(event){
   }
 })
 
-
 // clear start page function
 var clearPage = function() {
     
@@ -238,7 +233,6 @@ var clearPage = function() {
     // starts quiz after page cleared
     loadQuest();
 };
-
 
 // when choice is clicked
 choiceEl.addEventListener('click', function(event) {
@@ -279,7 +273,6 @@ choiceEl.addEventListener('click', function(event) {
     nextQuest();
   }
 });
-
 
 // page clears after start button clicked and quiz starts
 btnEl.addEventListener("click", clearPage);
