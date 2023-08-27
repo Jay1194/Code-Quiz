@@ -1,9 +1,10 @@
 # Code-Quiz
 
 ## Description
-The purpose of this application was to to build a timed coding quiz with multiple-choice questions.
-This app runs in the browser, it uses a few web APIs, demonstrate my knowledge of using the DOM APi and features
-dynamically updates HTML and CSS powered by JavaScript code. It has a clean, polished, and responsive user interface.
+The objective behind this application was to develop a timed coding quiz encompassing a range of multiple-choice questions. 
+Operating within the browser environment, this app employs several web APIs. It effectively showcases my adeptness in utilizing
+the DOM API and showcases the implementation of dynamic HTML and CSS transformations driven by JavaScript code. The end result 
+boasts a sleek, refined, and adaptable user interface.
 
 ## Mock up 
 
