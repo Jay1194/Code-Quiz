@@ -76,3 +76,17 @@ button:hover {
     cursor: pointer;
     transition: background-color 0.2s;
 }
+
+@media screen and (max-width: 575px) {
+    .multi-choice  {
+        width: 80%;
+        height: auto;
+        font-size: 5vw;
+        margin: 4vw auto;
+    }
+    #instructions  {
+        font-size: 5vw;
+        width: 80%;
+        margin: 0 auto;
+    }
+}
