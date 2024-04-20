@@ -6,39 +6,31 @@
     <title>Code Quiz</title>
     <link rel="stylesheet" href="assets\css\style.css">
 </head>
-
 <body>
-    <!-- View HighScore / Timer section-->
     <header>
         <section class="upper">
             <p id="black">Time:<span id="time"> 60 </span></p>
             <p id="score">View high scores</p>
         </section>
     </header>
-    <!--  Quiz Section -->
     <main>
-        <!-- Quiz questions -->
         <section class="questions container" >
             <h1 id="title">Code Quiz Challenge</h1>
             <ul id="quest"></ul>
         </section>
-        <!-- Instructions-->
         <section class="container smallText" >
             <p id="instructions">
                 Try to answer the code related questions within the 60 second time limit. <br>
                 Keep in mind the wrong answers will penatilize your time to answer the questions by 12.
             </p>
-            <!-- Quiz multi-choice-->
             <ul id="choice"></ul>
             <ul id="label" ></ul>
             <ul id="submit"></ul>
         </section>
-        <!-- Start button -->
         <section class="container" id="startBtn">
             <button type="click" class="btnStyle">Start</button>
         </section>
     </main>
-    
     <script src="assets\js\script.js"></script>
 </body>
 </html>
