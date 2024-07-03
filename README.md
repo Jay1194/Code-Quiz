@@ -12,6 +12,6 @@ boasts a sleek, refined, and adaptable user interface.
 
 ## Deployment
 
-* Application Deployment URL - https://jay1194.github.io/code-quiz/
+* Application Deployment URL - https://jay1194.github.io/Code-Quiz/
 
-* GitHub Repository - https://github.com/Jay1194/code-quiz
+* GitHub Repository - https://github.com/Jay1194/Code-Quiz
